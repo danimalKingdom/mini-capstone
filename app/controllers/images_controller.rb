@@ -13,4 +13,5 @@ class ImagesController < ApplicationController
     redirect_to "/products/#{product_id}"
   end
 
+
 end

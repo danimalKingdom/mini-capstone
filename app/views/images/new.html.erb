@@ -13,7 +13,7 @@
               
               <div>
                 <%= label_tag :product_id %>
-                <%= text_field_tag :product_id %>
+                <%= collection_select :product, :product_id, Product.all, :id, :name %>
               </div>
 
               <%= submit_tag "Process New Image" %>
