@@ -23,7 +23,12 @@
 
               <div>
                 <%= label_tag :supplier %>
-                <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
+                <%= collection_select :supplier, :supplier_id, Supplier.all, :supplier_id, :name %>
+              </div>
+
+              <div>
+                <%= label_tag :image %>
+                <%= text_field_tag :image %>
               </div>
 
               <%= submit_tag "Process New Nerdiness" %>
