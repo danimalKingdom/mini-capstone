@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       name: params[:name],
       description: params[:description],
       price: params[:price],
-      supplier_id: params[:supplier_id]
+      supplier_id: params[:supplier]['supplier_id']
       )
     @product.images.create(url: params[:image], product_id: @product.id)
 
