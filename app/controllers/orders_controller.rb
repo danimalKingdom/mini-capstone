@@ -4,14 +4,17 @@ class OrdersController < ApplicationController
     product_id = params[:product_id]
     product = Product.find_by(id: product_id)
     quantity = params[:quantity]
-    order = Order.create(
+    order = Order.new(
       user_id: current_user.id, 
       quantity: quantity, 
-      product_id: product_id,
-      subtotal: (product.price * quantity.to_f),
-      tax: (product.tax * quantity.to_f),
-      total: (product.total * quantity.to_f)
+      product_id: product_id
     )
+
+    order.calculate_totals(product.price, quantity.to_f)
+
+    order.save
+
+    flash[:success] = "Order successfully created"
     redirect_to "/orders/#{order.id}" 
   end
 
