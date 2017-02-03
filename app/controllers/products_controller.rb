@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
     session[:count] += 1 
     @visit_count = session[:count]
     @products = Product.all
+    if params[:category]
+      @products = Category.find_by(name: params[:category]).products
+    end
   end
 
   def new

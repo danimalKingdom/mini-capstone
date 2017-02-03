@@ -5,6 +5,11 @@
             <h2><%= @product.name %></h2>
             <span><p>Supplied by: <%= @supplier.name %></p></span>
             <p>Price: <%= @product.price %></p>
+            <h4>Categories:</h4>
+            <% @product.categories.each do |category| %>
+              <p><%= category.name %></p>
+            <% end %>
+            
             <% @images.each do |image| %>
               <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
             <% end %>
