@@ -15,10 +15,14 @@ Rails.application.routes.draw do
   post '/orders' => 'orders#create'
   get '/orders/:id' => 'orders#show'
 
-  get "/signup" => "users#new"
+  get '/signup' => "users#new"
   post "/users" => "users#create"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
+
+  get '/carted_products' => 'carted_products#index'
+  post '/carted_products' => 'carted_products#create'
+  delete '/carted_products/:id' => 'carted_products#destroy'
   
 end

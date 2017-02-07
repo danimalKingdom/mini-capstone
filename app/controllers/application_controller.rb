@@ -12,4 +12,16 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  before_action :calculate_cart_count
+
+  private ####################
+
+    def calculate_cart_count
+      if current_user
+        @cart_count = current_user.carted_products.where(status: "carted").count
+      else
+        @cart_count = 0
+      end
+    end
+
 end
