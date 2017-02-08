@@ -12,6 +12,7 @@ class Order < ActiveRecord::Base
 
     tax = subtotal * 0.09
     total = subtotal + tax
+    
     update(subtotal: subtotal, tax: tax, total: total)
   end
 

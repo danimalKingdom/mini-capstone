@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   
+  before_action :authenticate_user!
+
   def index
     if session[:count] == nil
       session[:count] = 0
@@ -13,6 +15,9 @@ class ProductsController < ApplicationController
   end
 
   def new
+    unless current_user && current_user.admin
+      redirect_to "/"
+    end
   end
 
   def create
