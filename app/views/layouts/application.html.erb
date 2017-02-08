@@ -41,11 +41,17 @@
               <li><a href="/products?category=<%=category.name%>"><%= category.name %></a></li>
             <% end %>
 
-            <li class="divider"></li>
-            <li><a href="/carted_products">Checkout (<%= @cart_count %>)</a></li>
+            <% if current_user %>
+              <li class="divider"></li>
+              <li><a href="/carted_products">Checkout (<%= @cart_count %>)</a></li>
 
-            <li class="divider"></li>
-            <li><a href="/logout">Logout</a></li>
+              <li class="divider"></li>
+              <li><a href="/logout">Logout</a></li>
+            <% else %>
+              <li class="divider"></li>
+              <li><a href="/signup">Signup</a></li>
+              <li><a href="/login">Login</a></li>
+            <% end %>
 
           </ul>
         </li>
