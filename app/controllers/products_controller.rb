@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def create
@@ -24,10 +25,15 @@ class ProductsController < ApplicationController
       price: params[:price],
       supplier_id: params[:supplier]['supplier_id']
       )
-    @product.images.create(url: params[:image], product_id: @product.id)
 
-    flash[:success] = "Product Created"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product Created"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :new
+    end
+    # @product.images.create(url: params[:image], product_id: @product.id)
+
   end
 
   def show
